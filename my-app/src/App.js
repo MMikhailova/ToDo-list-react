@@ -7,8 +7,10 @@ const LOCAL_STORAGE_KEY = "toDos.todo";
 function App() {
   const [todos, setTodos] = useState([]);
   const newTodo = useRef();
-  // const [editToDo, setEditToDo] = useState(null);
-  //  const [editText, setEditText] = useState("");
+
+  const [editToDo, setEditToDo] = useState(null);
+  const [editText, setEditText] = useState("");
+  
   //get stored todos from local storage
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -48,12 +50,18 @@ function App() {
       })
     );
   }
-  // function handleEdit(id) {
-  //   setEditToDo(id);
-  // }
-  // function handleEditText(text) {
-  //  setEditText(text)
-  // }
+  function handleEdit(id) {
+    setEditToDo(id)
+  }
+  function handleEditText(text) {
+    setEditText(text)
+  }
+  function editTask(id) {
+    const updatedTodos = [...todos].map((todo) => { if (todo.id === id) { todo.name = editText }return todo })
+    setTodos(updatedTodos)
+    setEditToDo(null)
+    setEditText("")
+  }
 
   return (
     <>
@@ -64,10 +72,11 @@ function App() {
         todos={todos}
         toggleToDo={handleToggleToDo}
         handleDelete={handleDelete}
-        // handleEdit={handleEdit}
-        // handleEditText={handleEditText}
-        // editToDo={editToDo}
-        // editText={editText}
+        handleEdit={handleEdit}
+        handleEditText={handleEditText}
+        editTask={editTask}
+        editToDo={editToDo}
+        editText={editText}
       />
       <div>{todos.filter((todo) => !todo.complete).length} task left</div>
     </>
