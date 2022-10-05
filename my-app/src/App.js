@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import ToDoList from "./ToDoList";
 
+
+
 const LOCAL_STORAGE_KEY = "toDos.todo";
 
 function App() {
@@ -64,10 +66,25 @@ function App() {
   }
 
   return (
-    <>
-      <input ref={newTodo} type="text" />
-      <button onClick={handleAddClick}>Add task</button>
-      <button onClick={handleClearClick}>Clear completed task</button>
+    <div className="position-absolute top-0 start-50 translate-middle-x mt-2 mb-2 ">
+      <img src="./to-do-listen-apps.webp" alt="todo"></img>
+      <div className="input-group">
+        <input ref={newTodo} type="text" className="form-control fs-5" />
+        <button
+          type="button"
+          className="btn btn-outline-primary"
+          onClick={handleAddClick}
+        >
+          Add task
+        </button>
+        <button
+          type="button"
+          className="btn btn-outline-secondary"
+          onClick={handleClearClick}
+        >
+          Clear completed task
+        </button>
+      </div>
       <ToDoList
         todos={todos}
         toggleToDo={handleToggleToDo}
@@ -78,8 +95,10 @@ function App() {
         editToDo={editToDo}
         editText={editText}
       />
-      <div>{todos.filter((todo) => !todo.complete).length} task left</div>
-    </>
+      <div className="text-center mt-3">
+        {todos.filter((todo) => !todo.complete).length} task left
+      </div>
+    </div>
   );
 }
 

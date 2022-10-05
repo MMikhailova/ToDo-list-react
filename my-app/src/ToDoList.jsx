@@ -13,7 +13,7 @@ export default function ToDoList({
     editText
 }) {
   return todos.map((todo) => (
-    <ToDo
+    <ToDo 
       key={todo.id}
       handleDelete={handleDelete}
       toggleToDo={toggleToDo}
