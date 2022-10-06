@@ -13,7 +13,7 @@ It is able to do the following:
 - [x] Remove item from the list
 - [x] Delete all tasks marked as completed
 
-![Page](public/to-do-listen-apps.webp)
+![Page](/my-app/public/screenshot.png)
 
 ## Project goals
 
