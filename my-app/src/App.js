@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import "./App.css";
-import ToDoList from "./ToDoList";
+import ToDoList from "./components/ToDoList";
 
 const LOCAL_STORAGE_KEY = "toDos.todo";
 
@@ -9,8 +9,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const newTodo = useRef();
  // control edited to do
-  const [editToDo, setEditToDo] = useState(null);
-  const [editText, setEditText] = useState("");
+
   
 // get todos from local storage
   useEffect(() => {
@@ -54,20 +53,11 @@ function App() {
       })
     );
   }
- // capture id of edited task
-  function handleEdit(id) {
-    setEditToDo(id)
-  }
- // capture new input (edited text)
-  function handleEditText(text) {
-    setEditText(text)
-  }
-  // update to do list
-  function editTask(id) {
-    const updatedTodos = [...todos].map((todo) => { if (todo.id === id) { todo.name = editText }return todo })
+// edit to do text
+  function editTask(editedTask) {
+    console.log(editedTask)
+    const updatedTodos = [...todos].map((todo) => { if (todo.id === editedTask.editToDo) { todo.name = editedTask.editText }return todo })
     setTodos(updatedTodos)
-    setEditToDo(null)
-    setEditText("")
   }
 
   return (
@@ -95,11 +85,7 @@ function App() {
         todos={todos}
         toggleToDo={handleToggleToDo}
         handleDelete={handleDelete}
-        handleEdit={handleEdit}
-        handleEditText={handleEditText}
         editTask={editTask}
-        editToDo={editToDo}
-        editText={editText}
       />
       <div className="text-center mt-3">
         {todos.filter((todo) => !todo.complete).length} task left

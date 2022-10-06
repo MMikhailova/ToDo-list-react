@@ -6,22 +6,16 @@ export default function ToDoList({
   todos,
   toggleToDo,
   handleDelete,
-  handleEdit,
-  handleEditText,
-  editTask,
-  editToDo,
-    editText
+  editTask
+ 
 }) {
   return todos.map((todo) => (
-    <ToDo 
+    <ToDo
       key={todo.id}
       handleDelete={handleDelete}
       toggleToDo={toggleToDo}
       todo={todo}
-      handleEdit={handleEdit}
-      handleEditText={handleEditText}
       editTask={editTask}
-            editToDo={editToDo}
     />
   ));
 }
