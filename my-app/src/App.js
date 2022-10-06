@@ -2,33 +2,34 @@ import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import ToDoList from "./ToDoList";
 
-
-
 const LOCAL_STORAGE_KEY = "toDos.todo";
 
 function App() {
+  // store and update to do list by using useState
   const [todos, setTodos] = useState([]);
   const newTodo = useRef();
-
+ // control edited to do
   const [editToDo, setEditToDo] = useState(null);
   const [editText, setEditText] = useState("");
   
-  //get stored todos from local storage
+// get todos from local storage
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (storedTodos) setTodos(storedTodos);
   }, []);
-  //save todos in localStorage
+// save todos in localStorage
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
   }, [todos]);
+
+// check box 
   function handleToggleToDo(id) {
     const newTodos = [...todos];
     const todo = newTodos.find((todo) => todo.id === id);
     todo.complete = !todo.complete;
     setTodos(newTodos);
   }
-  //add new todo
+// add new todo
   function handleAddClick(e) {
     const name = newTodo.current.value;
     if (name === "") return;
@@ -40,11 +41,12 @@ function App() {
     });
     newTodo.current.value = null;
   }
+ // delete completed tasks
   function handleClearClick() {
     const newToDos = todos.filter((todo) => !todo.complete);
     setTodos(newToDos);
   }
-
+// delete selected task
   function handleDelete(id) {
     setTodos((previousTodo) =>
       previousTodo.filter((todo) => {
@@ -52,12 +54,15 @@ function App() {
       })
     );
   }
+ // capture id of edited task
   function handleEdit(id) {
     setEditToDo(id)
   }
+ // capture new input (edited text)
   function handleEditText(text) {
     setEditText(text)
   }
+  // update to do list
   function editTask(id) {
     const updatedTodos = [...todos].map((todo) => { if (todo.id === id) { todo.name = editText }return todo })
     setTodos(updatedTodos)
@@ -85,6 +90,7 @@ function App() {
           Clear completed task
         </button>
       </div>
+      {/* render list of updated todos */}
       <ToDoList
         todos={todos}
         toggleToDo={handleToggleToDo}
