@@ -32,6 +32,7 @@ It is able to do the following:
 
 ## Try to make your To do list by following the steps:   
 
-In the project directory run "npm start".   
+In the project directory "my-app" run "npm start".   
 Runs the app in the development mode.  
 Open http://localhost:3000 to view it in your browser.
+Make a list!
