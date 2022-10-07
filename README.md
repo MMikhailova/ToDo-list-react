@@ -14,7 +14,6 @@ It is able to do the following:
 - [x] Delete all tasks marked as completed
 
 ![Page](/my-app/public/screenshot.png)
-
 ## Project goals
 
 - To practice creating documentation
