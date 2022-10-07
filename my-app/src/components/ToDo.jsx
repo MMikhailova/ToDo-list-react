@@ -3,9 +3,9 @@ import {useState} from 'react';
 
 export default function ToDo({
   todo,
-  toggleToDo,
-  handleDelete,
-  editTask
+  onToggle,
+  onDelete,
+  onEdit
 }) {
     const [editToDo, setEditToDo] = useState(null);
     const [editText, setEditText] = useState("");
@@ -16,8 +16,9 @@ export default function ToDo({
           className="form-control"
           style={{ padding: "10px" }}
           type="text"
-          onChange={(e) => { setEditText(e.target.value)
-           }}
+          onChange={(e) => {
+            setEditText(e.target.value);
+          }}
           value={editText}
         ></input>
       ) : (
@@ -25,7 +26,7 @@ export default function ToDo({
           <input
             style={{ margin: "5px" }}
             type="checkBox"
-            onChange={() => toggleToDo(todo.id)}
+            onChange={() => onToggle(todo.id)}
             checked={todo.complete}
           />
           {todo.name}
@@ -40,16 +41,17 @@ export default function ToDo({
       <button
         className="btn btn-outline-success float-end"
         onClick={() => {
-          editTask({ editToDo, editText });
-          setEditText("")
-        setEditToDo(null)}}
+          onEdit({ editToDo, editText });
+          setEditText("");
+          setEditToDo(null);
+        }}
       >
         Submit
       </button>
       <button
         type="button"
         className="btn btn-outline-danger float-end"
-        onClick={() => handleDelete(todo.id)}
+        onClick={() => onDelete(todo.id)}
       >
         Delete
       </button>
