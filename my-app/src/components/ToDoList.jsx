@@ -4,18 +4,25 @@ import ToDo from './ToDo'
 
 export default function ToDoList({
   todos,
-  toggleToDo,
-  handleDelete,
-  editTask
+  onToggle,
+  onDelete,
+  onEdit
  
 }) {
-  return todos.map((todo) => (
-    <ToDo
-      key={todo.id}
-      handleDelete={handleDelete}
-      toggleToDo={toggleToDo}
-      todo={todo}
-      editTask={editTask}
-    />
-  ));
+  return (
+    <div
+      className="list"
+      style={{padding:`${todos.length!==0?"20px":"0"}`, backgroundColor:"lavender"}}
+    >
+      {todos.map((todo) => (
+        <ToDo
+          key={todo.id}
+          onDelete={onDelete}
+          onToggle={onToggle}
+          todo={todo}
+          onEdit={onEdit}
+        />
+      ))}
+    </div>
+  );
 }
