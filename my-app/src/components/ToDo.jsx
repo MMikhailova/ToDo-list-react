@@ -35,26 +35,19 @@ export default function ToDo({
       <button
         className="btn btn-outline-primary float-end"
         onClick={() => setEditToDo(todo.id)}
-      >
-        Edit
-      </button>
+      > Edit</button>
       <button
         className="btn btn-outline-success float-end"
         onClick={() => {
           onEdit({ editToDo, editText });
           setEditText("");
           setEditToDo(null);
-        }}
-      >
-        Submit
-      </button>
+        }}>Submit</button>
       <button
         type="button"
         className="btn btn-outline-danger float-end"
         onClick={() => onDelete(todo.id)}
-      >
-        Delete
-      </button>
+      >Delete</button>
     </div>
   );
 }

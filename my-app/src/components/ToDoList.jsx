@@ -7,7 +7,6 @@ export default function ToDoList({
   onToggle,
   onDelete,
   onEdit
- 
 }) {
   return (
     <div

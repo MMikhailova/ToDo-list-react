@@ -1,15 +1,12 @@
-import { useState, useRef} from "react";
+import { useState} from "react";
 import "./App.css";
 import ToDoList from "./components/ToDoList";
 import InputToDo from "./components/InputToDo";
 
-
 function App() {
-  // store and update to do list by using useState
+
+// store and update to do list by using useState
   const [todos, setTodos] = useState([]);
-
- // control edited to do
-
 
 // check box 
   function onToggle(id) {
@@ -25,23 +22,22 @@ function App() {
     setTodos((previousTodo) => {
       return [
         ...previousTodo,
-        { id: new Date().getTime(), name: name, complete: false },
-      ];
-    });
+        { id: new Date().getTime(), name: name, complete: false }]})
   }
+
  // delete completed tasks
   function onClear() {
     const newToDos = todos.filter((todo) => !todo.complete);
     setTodos(newToDos);
   }
+
 // delete selected task
   function onDelete(id) {
     setTodos((previousTodo) =>
       previousTodo.filter((todo) => {
-        return todo.id !== id;
-      })
-    );
+        return todo.id !== id }));
   }
+
 // edit to do text
   function onEdit(editedTask) {
     console.log(editedTask)

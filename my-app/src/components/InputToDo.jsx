@@ -12,15 +12,13 @@ export default function InputToDo({onAdd,onClear}) {
           <button
             type="button"
             className="btn btn-outline-primary"
-              onClick={() => { onAdd({ input }); setInput("")}}>
+              onClick={() => {onAdd({ input }); setInput("")}}>
             Add task</button>
-           <button
+          <button
             type="button"
             className="btn btn-outline-secondary"
             onClick={()=>onClear()}
-      >
-        Clear completed task
-      </button>
+      >Clear completed task</button>
     </div>
   );
 }
