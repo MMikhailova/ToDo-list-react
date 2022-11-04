@@ -8,7 +8,8 @@ export default function ToDo({
   onEdit
 }) {
     const [editToDo, setEditToDo] = useState(null);
-    const [editText, setEditText] = useState("");
+  const [editText, setEditText] = useState("");
+  const [submit, setSubmit]=useState(false)
   return (
     <div className="input-group mt-2 mb-2 bg-light text-dark">
       {editToDo === todo.id ? (
@@ -33,15 +34,18 @@ export default function ToDo({
         </label>
       )}
       <button
+      style={{display:`${!submit?"block":"none"}`}}
         className="btn btn-outline-primary float-end"
-        onClick={() => setEditToDo(todo.id)}
+        onClick={() => { setEditToDo(todo.id);setSubmit(true) }}
       > Edit</button>
       <button
+        style={{display:`${submit?"block":"none"}`}}
         className="btn btn-outline-success float-end"
         onClick={() => {
           onEdit({ editToDo, editText });
           setEditText("");
           setEditToDo(null);
+          setSubmit(false)
         }}>Submit</button>
       <button
         type="button"
