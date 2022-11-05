@@ -46,17 +46,19 @@ function App() {
   }
 
   return (
-    <div className="position-absolute top-0 start-50 translate-middle-x mt-2 mb-2 ">
-      <img src="./to-do-listen-apps.webp" alt="todo"></img>
-      <InputToDo onAdd={onAdd} onClear={onClear}/>
-      <ToDoList
-        todos={todos}
-        onToggle={onToggle}
-        onDelete={onDelete}
-        onEdit={onEdit}
-      />
-      <div className="text-center mt-3">
-        {todos.filter((todo) => !todo.complete).length} task left
+    <div className="container">
+      <div className="d-flex flex-column m-auto">
+        <img src="./to-do-listen-apps.webp" alt="todo"></img>
+        <InputToDo onAdd={onAdd} onClear={onClear} />
+        <ToDoList
+          todos={todos}
+          onToggle={onToggle}
+          onDelete={onDelete}
+          onEdit={onEdit}
+        />
+        <div className="text-center mt-3">
+          {todos.filter((todo) => !todo.complete).length} task left
+        </div>
       </div>
     </div>
   );

@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@media only screen and (max-width: 600px){
+div.container{width:100%}
+.form-control.fs-5{width:100%}
+.btn{background-color: white;}
+.input-group{justify-content: center;}
+label.form-control.fs-5{width:50%}
+}
+@media only screen and (min-width: 992px) {div.container{width:50%}}

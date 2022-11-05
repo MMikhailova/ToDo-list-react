@@ -15,7 +15,7 @@ export default function ToDo({
       {editToDo === todo.id ? (
         <input
           className="form-control"
-          style={{ padding: "10px" }}
+          style={{ padding: "10px"}}
           type="text"
           onChange={(e) => {
             setEditText(e.target.value);

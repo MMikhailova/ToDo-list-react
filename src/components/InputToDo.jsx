@@ -18,7 +18,7 @@ export default function InputToDo({onAdd,onClear}) {
             type="button"
             className="btn btn-outline-secondary"
             onClick={()=>onClear()}
-      >Clear completed task</button>
+      >Clear completed</button>
     </div>
   );
 }
