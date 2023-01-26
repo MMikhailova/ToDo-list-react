@@ -13,7 +13,7 @@ It is able to do the following:
 - [x] Remove item from the list
 - [x] Delete all tasks marked as completed
 
-![Page](/public/Screenshot%2023-01-26%at%13.57.12.png)
+![Page](/public/Screenshot%202022-11-18%20at%2017.32.38.png)
 ## Project goals
 
 - To practice creating documentation
